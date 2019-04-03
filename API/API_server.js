@@ -23,5 +23,11 @@ app.listen(port, function(){
 app.get('/', function(request, response){
   response.status(200);
   response.setHeader('Content-Type', 'text/html')
-  response.render('index',{feedback:""});
+  response.render('index');
+});
+
+app.get('/index', function(request, response){
+  response.status(200);
+  response.setHeader('Content-Type', 'text/html')
+  response.render('index');
 });
