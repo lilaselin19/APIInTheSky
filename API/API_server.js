@@ -21,12 +21,16 @@ app.listen(port, function(){
 });
 
 app.get('/', function(request, response){
+  console.log("Request-get /");
+
   response.status(200);
   response.setHeader('Content-Type', 'text/html')
   response.render('index');
 });
 
 app.get('/index', function(request, response){
+  console.log("Request-get /index");
+
   response.status(200);
   response.setHeader('Content-Type', 'text/html')
   response.render('index');
