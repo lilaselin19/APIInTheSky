@@ -23,6 +23,16 @@ router.post('/devs',function(req,res){
   });
 });
 
+router.delete('/devs/:id',function(req,res){
+  console.log("Request-delete /devs/"+req.params.id);
+
+  Devs.deleteDev(req.params.id,function(){
+    res.status(200);
+    res.setHeader('Content-Type', 'text/html');
+    res.render('index');
+  });
+});
+
 var createKey = function(){
   var key;
   do while(Devs.uniqueKey(key)==false){
