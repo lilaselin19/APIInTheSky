@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
+/*
 var Data = require('../models/data');
 var Devs = require('../models/devs');
 
@@ -80,5 +80,6 @@ var generateAPIkey = function(){
 
   return key;
 };
+*/
 
 module.exports = router;

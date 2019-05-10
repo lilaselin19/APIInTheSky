@@ -8,12 +8,12 @@ app.use(methodOverride('_method'));
 app.use(express.urlencoded());
 
 //MVC connection
-app.use(require('./controllers/user'));
+app.use(require('./controllers/data'));
+app.use(require('./controllers/devs'));
 
 app.use(express.static('public'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
-app.use(favicon(__dirname + '/public/images/logo.png'));
 
 var port = process.env.PORT || 3000; //||8000
 app.listen(port, function(){

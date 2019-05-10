@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>API In The Sky - Index</title>
+ </head>
+
+<body>
+  <h1><a href="/">P R S: Showdown</a></h1>
+
+  <div id="enter_name">
+    <h2 class=center>Welcome to Paper, Rock, Scissors</h2>
+    <br>
+    <a href="/user/new"><button class=center id="new_user_button">Create A New Account</button></a>
+    <br>
+    <br>
+    <h3 class=center>Or</h3>
+    <h2 class=center>Login</h2>
+    <form class=center action="/users/game" method="get">
+      Username:<input type="text" name="user_name">
+      <br>
+      Password:<input type="text" name="password">
+      <br>
+      <br>
+      <button type="submit" id = "enter_password_button">Login</button>
+    </form>
+  </div>
+  <% include global/footer %>
+
+ </body>
+</html>
