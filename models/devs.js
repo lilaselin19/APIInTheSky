@@ -87,7 +87,7 @@ exports.updateUser = function(user,callback){
           }
           }
       });
-    }=
+    }
 }
 exports.login = function(ur,callback){
 exports.rows(function(rows){
