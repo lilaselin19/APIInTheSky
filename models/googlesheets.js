@@ -15,27 +15,26 @@ exports.loadGoogle = function(filename, callback) {
 }
 
 //Updates a row
-exports.updateRow=function(filename, userName, newStuff, callback){
+exports.updateRow=function(filename, username, extra, callback){
   var sheet;
   doc.useServiceAccountAuth(creds, function (err) {
     doc.getInfo(function(err,info){
-      sheet=info.worksheets[filename];
-      sheet.getCells({
-        'min-col': 1,
-        'max-col': 1,
-        'return-empty': true}, function(err, cells) {
+  sheet=info.worksheets[filename];
+  sheet.getCells({
+  'min-col': 1,
+  'max-col': 1,
+  'return-empty': true}, function(err, cells) {
           for(var i=0; i<cells.length;i++){
-            if(cells[i].value==userName){
-              sheet.getCells({'min-row': i+1,'max-row': i+1},
+            if(cells[i].value==username){
+            sheet.getCells({'min-row': i+1,'max-row': i+1},
               function(err, cells) {
-                for(var i=0; i<cells.length;i++){
-                  cells[i].setValue(newStuff[i]);
+              for(var i=0; i<cells.length;i++){
+              cells[i].setValue(extra[i]);
                 }
               });
               break;
             }
           }
-          console.log("doing callback");
           callback();
       });
     });
@@ -52,7 +51,6 @@ exports.createRow = function(obj, filenumber, callback) {
   });
 }
 
-  // deletes a row (when deleting a user)
 exports.deleteRow = function(user_id, file, callback) {
   var sheet;
   doc.useServiceAccountAuth(creds, function (err) {
@@ -94,27 +92,5 @@ exports.getAllKeys = function(callback) {
           callback(keys);
       });
     });
-  });
-}
-
-exports.clearSheet = function(file, callback){
-  var sheet;
-  doc.useServiceAccountAuth(creds, function (err) {
-    doc.getInfo(function(err,info){
-      sheet=info.worksheets[file];
-      sheet.getCells({
-        'min-col': 1,
-        'max-col': 1,
-        'return-empty': true}, function(err, cells) {
-         for(var i=0; i<cells.length;i++){
-           var index = i;
-           sheet.getRows(function (err, rows) {
-             rows[i-1].del(function(err){
-               callback();
-             });
-           });
-          }
-        })
-      })
   });
 }
